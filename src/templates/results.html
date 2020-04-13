@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'bootstrap.min.css')}}">
+    <title>stats</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .mycont{
+          
+            width: 40vw;
+            height: auto;
+            border-radius: 36px;
+            z-index: 5;
+           padding: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid m-0 p-0">
+        <nav class="navbar navigater navbar-expand-md navbar-dark  bg-dark">
+          <a class="navbar-brand" href="#"><img src="#"  class= "logo"alt=""> Covid Analyser</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav m-auto">
+              <li class="nav-item active">
+                <a class="nav-link pr-5" href="{{url_for('index')}}">Input data <span class="sr-only">(current)</span> </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link text-info  pr-5" href="#">Check predictions </a>
+              </li>
+            </ul>
+  
+           
+        </nav>
+        
+      </div>
+    
+    <div class="container-fluid bg-dark">
+        <div class="container bg-light mycont">
+            <div class=" ">
+                <h2 class="text-success text-center">  Result for covid 19  </h2>
+          Region:  {{data['region'] ['name']}} <br>
+          Average age population: {{data['region']['AvgAge'] }} <br>
+          Average daily income in USD $: {{data['region']['AvgDailyIncomeInUSD']}} <br>
+          Average daily income population: {{data['region']['AvgDailyIncomePopulation']}} <br>
+          Reported cases: {{data['reportedCases']}} <br>
+          Period type: {{data['periodType']}} <br>
+          time to elapse: {{data['timeToElapse']}} <br>
+          total number of hospital beds: {{data['totalHospitalBeds']}}  <br>
+            </div>
+            <div class=" ">
+                 <h3 class="text-info text-center">Impact of covid 19 </h3>
+                 Currently infected people: {{impact['currentlyInfected']}} <br>
+                 Infections by {{data['timeToElapse']}} days : {{impact['InfectionByRequestedTime']}} <br>
+                 severe cases by {{data['timeToElapse']}} days: {{impact['severeCasesByRequestedTime']}} <br>
+                 Hospital beds that will be available: {{impact['available_beds']}} <br>
+                 cases needing ICU by {{data['timeToElapse']}} days: {{impact['casesForIcuByRequestedTime']}} <br>
+                 cases for ventilators in {{data['timeToElapse']}} days : {{impact['casesForVentilatorsByRequestedTime']}} <br>
+                 amount in dollars losses: {{impact['dollarsInFlight']}} <br>
+          
+    
+            </div>
+            <div class="">
+                <h3 class="text-center text-info ">  Severe Impact of covid 19 </h3>
+           Currently infected people: {{severeImpact['currentlyInfected']}} <br>
+                 Infections by {{data['timeToElapse']}} days : {{severeImpact['InfectionByRequestedTime']}} <br>
+                 severe cases by {{data['timeToElapse']}} days: {{severeImpact['severeCasesByRequestedTime']}} <br>
+                 Hospital beds that will be available: {{impact['available_beds']}} <br>
+                 cases needing ICU by {{data['timeToElapse']}} days: {{severeImpact['casesForIcuByRequestedTime']}} <br>
+                 cases for ventilators in {{data['timeToElapse']}} days : {{severeImpact['casesForVentilatorsByRequestedTime']}} <br>
+                 amount in dollars losses: {{severeImpact['dollarsInFlight']}} <br>
+        
+                 
+    
+            </div>
+
+        </div>
+        
+       
+    </div>
+</body>
+</html>

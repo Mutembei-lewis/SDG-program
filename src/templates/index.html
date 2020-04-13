@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'bootstrap.min.css')}}">
+    <title>covid19 program testing</title>
+
+    <style>
+      body{
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+      }
+      @media  all and (min-width: 468px) {
+        .covid19form{
+          position: relative;
+          margin: auto;
+          background-color: white;
+          color: rgb(24, 11, 11);
+          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+          border-radius: 1.8rem;
+          width: 60vw;
+          height: auto;
+          margin-top: 0.8rem;
+          padding: 2rem;
+          -webkit-box-shadow: 7px 15px 65px 15px rgba(15, 6, 4, 0.86);
+          -moz-box-shadow: 7px 15px 65px 15px rgba(14, 3, 2, 0.86);
+          box-shadow: 7px 15px 65px 15px rgba(15, 4, 2, 0.86);
+          
+          z-index: 5;
+        }
+        
+        }
+        @media all and (min-width: 768px) {
+          
+          .covid19form{
+            position: relative;
+            margin: auto;
+            background-color: white;
+            color: rgb(24, 11, 11);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            border-radius: 1.8rem;
+            width: 40vw;
+            height: auto;
+            margin-top: 0.8rem;
+            padding: 2rem;
+            -webkit-box-shadow: 7px 15px 65px 15px rgba(15, 6, 4, 0.86);
+            -moz-box-shadow: 7px 15px 65px 15px rgba(14, 3, 2, 0.86);
+            box-shadow: 7px 15px 65px 15px rgba(15, 4, 2, 0.86);
+            
+            z-index: 5;
+          }
+        }
+      
+    </style>
+  </head>
+  <body>
+    <div class="" style=" background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);">
+            <div class="container-fluid m-0 p-0">
+              <nav class="navbar navigater navbar-expand-md navbar-dark  bg-dark">
+                <a class="navbar-brand" href="#"><img src="#"  class= "logo"alt=""> Covid Analyser</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav m-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link pr-5" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link text-info  pr-5" href="#">Check predictions </a>
+                    </li>
+                  </ul>
+        
+                 
+              </nav>
+              
+            </div>
+            <div class="container covid19form">
+              <form method="POST" action="/covid19ImpactEstimator" class="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    
+                    <div class="form-group">
+                        {{ form.name.label(class="form-control-label mr-sm-5") }}
+                        {{form.name (class ="float-lg-right pr-lg-5  border-info rounded")}}
+                        
+                    </div>
+                    <div class="form-group">
+                        {{ form.AvgAge.label(class="form-control-label ") }}
+                       {{form.AvgAge (class ="float-lg-right pr-lg-5  border-info rounded") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.AvgDailyIncomeInUSD.label(class="form-control-label ") }}
+                        {{form.AvgDailyIncomeInUSD (class ="float-lg-right pr-lg-5  border-info rounded")}}
+                    </div>
+                    <div class="form-group">
+                        {{ form.AvgDailyIncomePopulation.label(class="form-control-label ") }}
+                        {{form.AvgDailyIncomePopulation (class ="float-lg-right pr-lg-5  border-info rounded")}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{ form.periodType.label(class="form-control-label  mr-lg-5") }}
+                        {{form.periodType (class =" ml-lg-5 pl-lg-3  border-info rounded")}}
+                    </div>
+                    <div class="form-group">
+                        {{ form.timeToElapse.label(class="form-control-label mr-sm-5 ") }}
+                        {{form.timeToElapse (class ="float-lg-right pr-lg-5  border-info rounded")}}
+                    </div>
+                    <div class="form-group">
+                        {{ form.reportedCases.label(class="form-control-label mr-sm-5") }}
+                        {{form.reportedCases (class ="float-lg-right pr-lg-5  border-info rounded")}}
+                    </div>
+                    <div class="form-group">
+                        {{ form.population.label(class="form-control-label mr-sm-5") }} 
+                        {{form.population (class ="float-lg-right pr-lg-5 ml-sm-5 border-info rounded")}}
+                    </div>
+                    <div class="form-group">
+                        {{ form.totalHospitalBeds.label(class="form-control-label mr-sm-5") }}
+                        {{form.totalHospitalBeds (class ="float-lg-right pr-lg-5  border-info rounded")}}
+                    </div>
+
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info " ) }}
+                </div> 
+            </form>
+       
+            </div>
+
+          </div>
+            
+  
+      
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{url_for('static', filename = 'bootstrap.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+  </body>
+</html>
